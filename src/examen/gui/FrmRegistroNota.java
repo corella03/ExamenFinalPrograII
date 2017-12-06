@@ -4,20 +4,28 @@
  * and open the template in the editor.
  */
 package examen.gui;
-
+import examen.entities.Alumno;
 /**
- *
- * @author luisalonso
- */
+ **
+ ** @author Luis Alonso Corella Chaves
+ ** 06/12/2017
+ **/
 public class FrmRegistroNota extends javax.swing.JFrame {
-
     /**
      * Creates new form FrmRegistroNota
      */
+    private Alumno alumno;
     public FrmRegistroNota() {
         initComponents();
+        setLocationRelativeTo(null);
+        alumno = new Alumno();
     }
-
+    public FrmRegistroNota(Alumno alumno) {
+        initComponents();
+        setLocationRelativeTo(null);
+        this.alumno = alumno;
+        System.out.println(alumno.getNombre());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,7 +50,6 @@ public class FrmRegistroNota extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     /**
      * @param args the command line arguments
      */
@@ -69,7 +76,9 @@ public class FrmRegistroNota extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrmRegistroNota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -77,7 +86,6 @@ public class FrmRegistroNota extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

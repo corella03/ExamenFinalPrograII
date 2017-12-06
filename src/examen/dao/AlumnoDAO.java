@@ -73,4 +73,23 @@ public class AlumnoDAO {
         alumno.setApellido(rs.getString("apellido"));
         return alumno;    
     }
+    /**
+     * Método que selecciona un alumno por medio de un id
+     * @param id que recibe un int con el id a buscar
+     * @return Alumno: el alumno correspondiente al id
+     */
+    public Alumno seleccionarPorId(int id) {
+        try (Connection con = Conexion.getConexion()) {
+            String sql = "select * from alumnos where id = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return cargarAlumno(rs);
+            }
+        } catch (Exception ex) {
+            throw new MiError("Problemas al cargar el Alumno, favor intente nuevamente");
+        }
+        return null;
+    }
 }

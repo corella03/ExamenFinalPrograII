@@ -42,4 +42,15 @@ public class AlumnoBO {
     public ArrayList<Alumno> cargarAlumnos(){
         return alumnodao.cargarAlumnos();
     }
+    /**
+     * Recibe id de la interfaz para buscar el alumno con dicho id.
+     * @param id int id de alumno a buscar
+     * @return Alumno.
+     */
+    public Alumno getAlumno(int id) {
+        if (id <= 0) {
+            throw new MiError("Favor seleccionar un Puesto");
+        }
+        return alumnodao.seleccionarPorId(id);
+    }
 }

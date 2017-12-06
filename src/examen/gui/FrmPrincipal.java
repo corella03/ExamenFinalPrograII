@@ -27,6 +27,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         notas.setVisible(true);
         dispose();
     }
+    public void irAFrmCargarAlumnos(){
+        FrmCargarAlumnos alumnos = new FrmCargarAlumnos();
+        alumnos.setVisible(true);
+        dispose();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -105,7 +110,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         irARegistroAlumno();
     }//GEN-LAST:event_brnAlumnoActionPerformed
     private void btnNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNotasActionPerformed
-        irARegistroNotas();
+        irAFrmCargarAlumnos();
     }//GEN-LAST:event_btnNotasActionPerformed
     /**
      * @param args the command line arguments

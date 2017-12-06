@@ -27,7 +27,10 @@ public class FrmRegistroAlumno extends javax.swing.JFrame {
         memu.setVisible(true);
         dispose();
     }
-    public void registrarPuesto(){
+    /**
+     * Metodo que toma los datos de la interfaz y los agrega a un Alumno para registarlo en la BD
+     */
+    public void registrarAlumno(){
         lblErrorAlumno.setText("");
         try {
             Alumno nuevoAlumno = new Alumno();
@@ -73,6 +76,7 @@ public class FrmRegistroAlumno extends javax.swing.JFrame {
         });
 
         lblErrorAlumno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblErrorAlumno.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         lblCedula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblCedula.setText("Cédula:");
@@ -85,6 +89,11 @@ public class FrmRegistroAlumno extends javax.swing.JFrame {
 
         btnRegistrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnRegistrar.setText("Registar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,10 +143,12 @@ public class FrmRegistroAlumno extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         irAMenuPrincipal();
     }//GEN-LAST:event_formWindowClosing
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        registrarAlumno();
+    }//GEN-LAST:event_btnRegistrarActionPerformed
     /**
      * @param args the command line arguments
      */
