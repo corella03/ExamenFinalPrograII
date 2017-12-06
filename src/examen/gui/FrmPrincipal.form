@@ -75,11 +75,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Registar Alumno"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="brnAlumnoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnNotas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Registar Notas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNotasActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>

@@ -23,7 +23,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         dispose();
     }
     public void irARegistroNotas(){
-        FrmRegistroNota notas = new FrmRegistroAlumno();
+        FrmRegistroNota notas = new FrmRegistroNota();
         notas.setVisible(true);
         dispose();
     }
@@ -44,8 +44,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         brnAlumno.setText("Registar Alumno");
+        brnAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                brnAlumnoActionPerformed(evt);
+            }
+        });
 
         btnNotas.setText("Registar Notas");
+        btnNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNotasActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Menú Principal");
@@ -91,6 +101,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void brnAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brnAlumnoActionPerformed
+        irARegistroAlumno();
+    }//GEN-LAST:event_brnAlumnoActionPerformed
+    private void btnNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNotasActionPerformed
+        irARegistroNotas();
+    }//GEN-LAST:event_btnNotasActionPerformed
     /**
      * @param args the command line arguments
      */

@@ -4,20 +4,49 @@
  * and open the template in the editor.
  */
 package examen.gui;
-
+import examen.bo.AlumnoBO;
+import examen.entities.Alumno;
+import examen.entities.MiError;
 /**
- *
- * @author luisalonso
- */
+ **
+ ** @author Luis Alonso Corella Chaves
+ ** 06/12/2017
+ **/
 public class FrmRegistroAlumno extends javax.swing.JFrame {
-
     /**
      * Creates new form FrmRegistroAlumno
      */
+    private Alumno alumno;
     public FrmRegistroAlumno() {
         initComponents();
+        setLocationRelativeTo(null);
+        alumno = new Alumno();
     }
-
+    public void irAMenuPrincipal(){
+        FrmPrincipal memu = new FrmPrincipal();
+        memu.setVisible(true);
+        dispose();
+    }
+    public void registrarPuesto(){
+        lblErrorAlumno.setText("");
+        try {
+            Alumno nuevoAlumno = new Alumno();
+            nuevoAlumno.setId(this.alumno.getId());
+            nuevoAlumno.setCedula(txtCedula.getText().trim().toLowerCase());
+            nuevoAlumno.setNombre(txtNombre.getText().trim());
+            nuevoAlumno.setApellido(txtApellido.getText().trim());
+            AlumnoBO alumnobo = new AlumnoBO();
+            if (alumnobo.registrarAlumno(nuevoAlumno)) {
+                lblErrorAlumno.setText("Alumno registrado con éxito.");
+            } else {
+                lblErrorAlumno.setText("Intente nuevamente.");
+            }
+        } catch (MiError ex) {
+            lblErrorAlumno.setText(ex.getMessage());
+        } catch (Exception ex) {
+            lblErrorAlumno.setText("Llamar a TI ...xD");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,22 +56,88 @@ public class FrmRegistroAlumno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        lblErrorAlumno = new javax.swing.JLabel();
+        lblCedula = new javax.swing.JLabel();
+        txtCedula = new javax.swing.JTextField();
+        lblNombre = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        lblApellido = new javax.swing.JLabel();
+        txtApellido = new javax.swing.JTextField();
+        btnRegistrar = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+
+        lblErrorAlumno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        lblCedula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblCedula.setText("Cédula:");
+
+        lblNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblNombre.setText("Nombre:");
+
+        lblApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblApellido.setText("Apellido:");
+
+        btnRegistrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnRegistrar.setText("Registar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 589, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblErrorAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(37, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 432, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(lblCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(lblApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(lblErrorAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        irAMenuPrincipal();
+    }//GEN-LAST:event_formWindowClosing
     /**
      * @param args the command line arguments
      */
@@ -69,7 +164,6 @@ public class FrmRegistroAlumno extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrmRegistroAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -77,7 +171,14 @@ public class FrmRegistroAlumno extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblCedula;
+    private javax.swing.JLabel lblErrorAlumno;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
